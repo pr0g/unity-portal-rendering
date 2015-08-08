@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/PortalShader.shader">
+    <Files>
+      <File FileName="Assets/Scripts/Portal.cs" Line="6" Column="79" />
+      <File FileName="Assets/Scripts/CamController.cs" Line="8" Column="32" />
+      <File FileName="Assets/Shaders/PortalShader.shader" Line="7" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
