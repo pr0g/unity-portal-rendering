@@ -1,3 +1,5 @@
 # gitignore file
 /PortalsWithRenderTargets/Temp
 /PortalsWithRenderTargets/Library
+
+*.userprefs
