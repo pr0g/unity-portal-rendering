@@ -5,7 +5,7 @@ Please see this accompanying blog post http://tomhulton.blogspot.co.uk/2015/08/p
 
 # Controls
 
-WASD - Camera forward/backward/strafe
-EQ - Camera adjust height
-Right Mouse Button - Look Around
-C - Toggle between main camera and portal camera view
+WASD - Camera forward/backward/strafe  
+EQ - Camera adjust height  
+Right Mouse Button - Look Around  
+C - Toggle between main camera and portal camera view  
