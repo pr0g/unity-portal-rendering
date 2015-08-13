@@ -7,5 +7,5 @@ Please see this accompanying blog post http://tomhulton.blogspot.co.uk/2015/08/p
 
 WASD - Camera forward/backward/strafe  
 EQ - Camera adjust height  
-Right Mouse Button - Look Around  
+Right Mouse Button + Mouse Move - Look Around  
 C - Toggle between main camera and portal camera view  
