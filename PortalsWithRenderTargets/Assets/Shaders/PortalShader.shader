@@ -32,7 +32,7 @@
 				// Perspective divide (Translate to NDC - (-1, 1))
 				float2 uv = i.pos_frag.xy / i.pos_frag.w;
 				// Map -1, 1 range to 0, 1 tex coord range
-				uv = (uv + float2(1.0f, 1.0f)) * 0.5f;
+				uv = (uv + float2(1.0, 1.0)) * 0.5;
 				return tex2D(_MainTex, uv);
 			}
 			ENDCG

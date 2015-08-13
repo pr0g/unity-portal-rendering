@@ -27,6 +27,7 @@ public class Portal : MonoBehaviour {
 
 			portalCamera.fieldOfView = MainCamera.fieldOfView;
 			portalCamera.aspect = MainCamera.aspect;
+
 			// Note: Optimisation to adjust the near clip as the camera gets further away from the Portal
 			// portalCamera.nearClipPlane = Vector3.Magnitude(Source.position - MainCamera.transform.position) - NearClipTolerance;
 		}
