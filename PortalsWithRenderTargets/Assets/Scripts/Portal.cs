@@ -20,12 +20,12 @@ public class Portal : MonoBehaviour {
 			portalCamera.transform.rotation = Destination.rotation * cameraRotationInSourceSpace;
 
 			// Calculate clip plane for portal (for culling of objects inbetween destination camera and portal)
-			Vector4 clipPlaneWorldSpace = new Vector4( Destination.forward.x, Destination.forward.y, Destination.forward.z, Vector3.Dot( Destination.position, -Destination.forward ) );
-			Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose( portalCamera.cameraToWorldMatrix ) * clipPlaneWorldSpace;
+			Vector4 clipPlaneWorldSpace = new Vector4(Destination.forward.x, Destination.forward.y, Destination.forward.z, Vector3.Dot(Destination.position, -Destination.forward));
+			Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(MainCamera.worldToCameraMatrix)) * clipPlaneWorldSpace;
 
 			// Update projection based on new clip plane
 			// Note: http://aras-p.info/texts/obliqueortho.html and http://www.terathon.com/lengyel/Lengyel-Oblique.pdf
-			portalCamera.projectionMatrix = portalCamera.CalculateObliqueMatrix( clipPlaneCameraSpace );
+			portalCamera.projectionMatrix = MainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
 		}
 	}
 }
