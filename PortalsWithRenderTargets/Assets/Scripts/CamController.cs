@@ -4,7 +4,7 @@ using System.Collections;
 // Simple script to allow WASD camera controls with mouse look
 public class CamController : MonoBehaviour {
 	public Camera MainCamera = null;
-	public Camera PortalCamera = null; // Currently just set to Portal Camera 1
+	public Camera PortalCamera = null;
 	public float LookSpeed = 1.0f;
 	public float MoveSpeed = 1.0f;
 	
