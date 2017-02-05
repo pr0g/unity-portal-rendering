@@ -19,7 +19,7 @@ public class Portal : MonoBehaviour {
 	private void LateUpdate() {
 		foreach (Camera portalCamera in PortalCameras) {
 			// Rotate Source 180 degrees so PortalCamera is mirror image of MainCamera
-			Matrix4x4 destinationFlipRotation = Matrix4x4.TRS(ZeroV3, Quaternion.AngleAxis(180.0f, Source.up), OneV3);
+			Matrix4x4 destinationFlipRotation = Matrix4x4.TRS(ZeroV3, Quaternion.AngleAxis(180.0f, Vector3.up), OneV3);
 			Matrix4x4 sourceInvMat = destinationFlipRotation * Source.worldToLocalMatrix;
 
 			// Calculate translation and rotation of MainCamera in Source space
