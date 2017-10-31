@@ -33,6 +33,9 @@
 				float2 uv = i.pos_frag.xy / i.pos_frag.w;
 				// Map -1, 1 range to 0, 1 tex coord range
 				uv = (uv + float2(1.0, 1.0)) * 0.5;
+#if UNITY_UV_STARTS_AT_TOP
+				uv.y = 1 - uv.y;
+#endif
 				return tex2D(_MainTex, uv);
 			}
 			ENDCG
