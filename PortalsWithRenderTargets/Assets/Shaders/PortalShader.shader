@@ -21,7 +21,7 @@
 			
 			v2f vert(appdata_base v) {
 				v2f o;
-				float4 clipSpacePosition = mul(UNITY_MATRIX_MVP, v.vertex);
+				float4 clipSpacePosition = UnityObjectToClipPos(v.vertex);
 				o.pos = clipSpacePosition;
 				// Copy of clip space position for fragment shader
 				o.pos_frag = clipSpacePosition;

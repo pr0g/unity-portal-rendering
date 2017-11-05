@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{4A184F26-1FCC-180A-517B-967840A7C57F}") = "PortalsWithRenderTargets", "Assembly-CSharp.csproj", "{6FC743F5-3242-1829-DC6B-253A15760D2E}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalsWithRenderTargets", "Assembly-CSharp.csproj", "{6FC743F5-3242-1829-DC6B-253A15760D2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +36,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal
