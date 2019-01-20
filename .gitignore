@@ -4,3 +4,4 @@
 
 *.userprefs
 */.vs
+*/obj
