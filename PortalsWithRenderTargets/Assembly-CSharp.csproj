@@ -61,7 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamController.cs" />
+    <Compile Include="Assets\Scripts\MathUtil.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
+    <Compile Include="Assets\Scripts\Teleporter.cs" />
     <None Include="Assets\Shaders\PortalShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/tomhultonharrop/Documents/Projects/Unity/portal_test_sync/unity-portal-rendering/PortalsWithRenderTargets/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
