@@ -74,14 +74,20 @@ public class MobileCamera : ScriptableObject
             Vector2 delta = new Vector2(x * sx, y * sy);
             displacement = ((right * delta.x) + (up * delta.y)) * PanSpeed;
 
-            Vector2 touch0NextPos = touch0.position + touch0.deltaPosition;
-            Vector2 touch1NextPos = touch1.position + touch1.deltaPosition;
+            // Pinch/Zoom Reference - https://unity3d.com/learn/tutorials/topics/mobile-touch/pinch-zoom
 
-            float nextTouchDeltaMag = (touch0NextPos - touch1NextPos).magnitude;
-            float touchDeltaMag = (touch1.position - touch0.position).magnitude;
+            // Find the position in the previous frame of each touch.
+            Vector2 touch0PrevPos = touch0.position - touch0.deltaPosition;
+            Vector2 touch1PrevPos = touch1.position - touch1.deltaPosition;
 
-            float deltaMagnitudeDiff = nextTouchDeltaMag - touchDeltaMag;
-            displacement += forward * deltaMagnitudeDiff * ZoomSpeed;
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            float prevTouchDeltaMag = (touch0PrevPos - touch1PrevPos).magnitude;
+            float touchDeltaMag = (touch0.position - touch1.position).magnitude;
+
+            // Find the difference in the distances between each frame.
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            displacement -= forward * deltaMagnitudeDiff * ZoomSpeed;
         }
         else
         {
