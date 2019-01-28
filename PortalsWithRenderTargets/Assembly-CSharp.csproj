@@ -61,7 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamController.cs" />
+    <Compile Include="Assets\Scripts\CommonCamera.cs" />
+    <Compile Include="Assets\Scripts\DesktopCamera.cs" />
     <Compile Include="Assets\Scripts\MathUtil.cs" />
+    <Compile Include="Assets\Scripts\MobileCamera.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\Teleporter.cs" />
     <None Include="Assets\Shaders\PortalShader.shader" />

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-// Simple script to allow WASD camera controls with mouse look
+// Camera Controller to wrap both PC and Mobile input
 public class CamController : MonoBehaviour
 {
-    public Camera MainCamera = null;
-    public Camera[] PortalCameras = null;
-    public float LookSpeed = 1.0f;
-    public float MoveSpeed = 1.0f;
+    public Camera MainCamera;
+    public Camera[] PortalCameras;
+    public DesktopCamera DesktopCamera;
+    public MobileCamera MobileCamera;
     public Vector3 PreviousPosition { get; private set; }
 
     private int CameraIndex = 0;
@@ -15,70 +15,56 @@ public class CamController : MonoBehaviour
 
     private void Start()
     {
+        // Initialize cameras to cycle between
         AllCameras = new List<Camera>();
         AllCameras.Add(MainCamera);
-        foreach (var cam in PortalCameras)
+        foreach (var portalCamera in PortalCameras)
         {
-            AllCameras.Add(cam);
+            AllCameras.Add(portalCamera);
+        }
+    }
+
+    private (Quaternion Rotation, Vector3 Displacement) CalculateNextTransform()
+    {
+        switch (SystemInfo.deviceType)
+        {
+            case DeviceType.Desktop:
+                return DesktopCamera.CalculateNextTransform(
+                    transform.right, transform.up, transform.forward);
+            case DeviceType.Handheld:
+                return MobileCamera.CalculateNextTransform(
+                    transform.right, transform.up, transform.forward);
+            default:
+                return (Rotation: Quaternion.identity, Displacement: Vector3.zero);
+        }
+    }
+
+    private bool CycleCamera()
+    {
+        switch (SystemInfo.deviceType)
+        {
+            case DeviceType.Desktop:
+                return DesktopCamera.CycleCamera();
+            case DeviceType.Handheld:
+                return MobileCamera.CycleCamera();
+            default:
+                return false;
         }
     }
 
     private void Update()
     {
         // Cycle cameras (to view the scene from the Portal cameras perspective)
-        if (Input.GetKeyDown(KeyCode.C))
+        if (CycleCamera())
         {
             AllCameras[CameraIndex].enabled = false;
             CameraIndex = (CameraIndex + 1) % AllCameras.Count;
             AllCameras[CameraIndex].enabled = true;
         }
 
-        // Simple Mouse Look
-        if (Input.GetMouseButton(1))
-        {
-            float xAxis = Input.GetAxis("Mouse X");
-            float yAxis = Input.GetAxis("Mouse Y");
-
-            Quaternion yRot = Quaternion.AngleAxis(xAxis * LookSpeed * Time.deltaTime, Vector3.up);
-            Quaternion xRot = Quaternion.AngleAxis(-yAxis * LookSpeed * Time.deltaTime, transform.right);
-
-            transform.localRotation = yRot * xRot * transform.localRotation;
-        }
-
-        Vector3 displacement = Vector3.zero;
-
-        // Basic Movement
-        if (Input.GetKey(KeyCode.W))
-        {
-            displacement = transform.forward * MoveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            displacement = -transform.forward * MoveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            displacement = -transform.right * MoveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            displacement = transform.right * MoveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            displacement = Vector3.up * MoveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            displacement = -Vector3.up * MoveSpeed * Time.deltaTime;
-        }
-
         PreviousPosition = transform.position;
-        transform.position += displacement;
+        var (Rotation, Displacement) = CalculateNextTransform();
+        transform.position += Displacement;
+        transform.localRotation = Rotation * transform.localRotation;
     }
 }
