@@ -15,7 +15,17 @@ Note: There's an artefact you'll encounter when moving through a portal where th
 
 ## Controls
 
+### Desktop
+
 WASD - Camera forward/backward/strafe  
 EQ - Camera adjust height  
-Right Mouse Button + Mouse Move - Look Around  
+Right Mouse Button + Mouse Move - Look around  
 C - Cycle between main camera and portal camera views  
+
+### Device
+
+One Finger, Hold + Move - Look around  
+One Finger, Double Tap + Hold - Move forward  
+Two Fingers, Pinch - Move forward/backward  
+Two Fingers, Pan - Move up/down/left/right (Camera space)  
+Three Fingers, Tap - Cycle cameras  
