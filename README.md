@@ -4,6 +4,8 @@
 
 Super small example of using off-screen render targets to achieve a portal effect in Unity.
 
+![alt text](portals.png)
+
 ## Info
 
 Please see this accompanying blog post <http://tomhulton.blogspot.co.uk/2015/08/portal-rendering-with-offscreen-render.html> for an explanation of the techniques involved.
