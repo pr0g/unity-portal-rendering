@@ -1,5 +1,6 @@
 ﻿using System;
 
+// Data shared by all cameras
 [System.Serializable]
 public class CommonCamera
 {

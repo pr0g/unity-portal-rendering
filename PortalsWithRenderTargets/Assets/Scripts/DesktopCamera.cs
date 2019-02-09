@@ -14,52 +14,53 @@ public class DesktopCamera : ScriptableObject
     public (Quaternion Rotation, Vector3 Displacement) CalculateNextTransform(
         Vector3 right, Vector3 up, Vector3 forward)
     {
-        Vector3 displacement = Vector3.zero;
-        Quaternion rotation = Quaternion.identity;
+        Vector3 displacementDelta = Vector3.zero;
+        Quaternion rotationDelta = Quaternion.identity;
 
         // Simple Mouse Look
         if (Input.GetMouseButton(1))
         {
-            float xAxis = Input.GetAxis("Mouse X") * Camera.LookSpeed;
-            float yAxis = Input.GetAxis("Mouse Y") * Camera.LookSpeed;
+            Vector2 scaledMouseDelta =
+                new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"))
+                * Camera.LookSpeed;
 
-            Quaternion yRot = Quaternion.AngleAxis(xAxis, Vector3.up);
-            Quaternion xRot = Quaternion.AngleAxis(-yAxis, right);
+            Quaternion yAxisRotation = Quaternion.AngleAxis(scaledMouseDelta.x, Vector3.up);
+            Quaternion xAxisRotation = Quaternion.AngleAxis(-scaledMouseDelta.y, right);
 
-            rotation = yRot * xRot;
+            rotationDelta = yAxisRotation * xAxisRotation;
         }
 
         // Basic Movement
         if (Input.GetKey(KeyCode.W))
         {
-            displacement = forward * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = forward * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            displacement = -forward * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = -forward * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            displacement = -right * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = -right * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            displacement = right * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = right * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            displacement = Vector3.up * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = Vector3.up * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            displacement = -Vector3.up * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta = -Vector3.up * Camera.MoveSpeed * Time.deltaTime;
         }
 
-        return (rotation, displacement);
+        return (rotationDelta, displacementDelta);
     }
 }
