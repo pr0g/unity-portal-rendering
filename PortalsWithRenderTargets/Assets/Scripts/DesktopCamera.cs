@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "Desktop Camera", menuName = "Cameras/Desktop Camera", order = 1)]
 public class DesktopCamera : ScriptableObject
@@ -33,32 +33,32 @@ public class DesktopCamera : ScriptableObject
         // Basic Movement
         if (Input.GetKey(KeyCode.W))
         {
-            displacementDelta = forward * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += forward * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            displacementDelta = -forward * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += -forward * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            displacementDelta = -right * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += -right * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            displacementDelta = right * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += right * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            displacementDelta = Vector3.up * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += Vector3.up * Camera.MoveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            displacementDelta = -Vector3.up * Camera.MoveSpeed * Time.deltaTime;
+            displacementDelta += -Vector3.up * Camera.MoveSpeed * Time.deltaTime;
         }
 
         return (rotationDelta, displacementDelta);
