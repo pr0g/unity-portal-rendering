@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public class Teleporter : MonoBehaviour
     // Player controller
     public CamController CamController;
 
-    private void LateUpdate()
+    private void Update()
     {
         Matrix4x4 destinationFlipRotation = Matrix4x4.TRS(
             MathUtil.ZeroV3, Quaternion.AngleAxis(180.0f, Vector3.up), MathUtil.OneV3);
